@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://unpkg.com/htmx.org@1.9.10"
+      integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <nav class="bg-orange-500 text-white">
+      <div class="container mx-auto flex justify-between items-center py-2">
+        <div class="text-2xl font-bold">shortio</div>
+        <div class="flex space-x-6">
+          <div>Contact us</div>
+          <div>About us</div>
+        </div>
+      </div>
+    </nav>
+    <form
+      id="shortioForm"
+      class="flex container mx-auto mt-20 space-x-3"
+      hx-post="/api/v1"
+      hx-target="#newUrlInfo"
+      hx-swap-oob="true"
+    >
+      <input
+        type="text"
+        class="w-full py-2 px-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+        placeholder="Enter your URL"
+        name="url"
+        required
+      /><input
+        type="text"
+        class="w-full py-2 px-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+        placeholder="Enter your custom string"
+        name="short"
+      /><input
+        type="number"
+        class="w-full py-2 px-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+        placeholder="Enter expiry (in hrs)"
+        name="expiry"
+      />
+      <button
+        type="submit"
+        class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Generate
+      </button>
+    </form>
+
+    <div
+      id="newUrlInfo"
+      class="w-full bg-gray-100 container mx-auto mt-20 rounded-lg"
+    ></div>
+    <div
+      id="error"
+      class="w-full bg-red-500 text-white container mx-auto mt-20 rounded-lg"
+    ></div>
+  </body>
+</html>
